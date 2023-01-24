@@ -1,16 +1,25 @@
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Scanner;
+// self-made exception
+//import java.rangeException;
 
 public class Grades {
     
+    // grades and numberOfGrades are static so they can be accessed in the main method
     private static int[] grades;
-    private int highest = grades[(grades.length-1)];
-    private int lowest = grades[0];
+    private int highest;
+    private int lowest;
     private static int numberOfGrades;
 
+    // use the constructor to make their values?
+    Grades () {
+        highest = grades[(grades.length-1)];
+        lowest = grades[0];
+    }
 
-    public void setGrades(int[] myArray) {
+
+    public static void setGrades(int[] myArray) {
         grades = myArray;
     }
     
@@ -116,28 +125,37 @@ public class Grades {
         }
         
         // Instantiating an array that is the size of the number of grades we have given it
-        grades = new int[numberOfGrades];
+        int[] userArray = new int[numberOfGrades];
 
         // for each grade, ask then put that input into the array
         for (int i = 0; i < numberOfGrades; i++) {
             System.out.printf("Enter grade %d:", (i+1));
 
+            rangeException re = new rangeException();
             // have the scanner's input get assigned to the userInputGrade variable
             String userInputGrade = myScanner.nextLine();
             // now lets TRY to just grab their stuff
             try{
                 int userGrade = Integer.parseInt(userInputGrade);
-                grades[i] = userGrade;
+                if (userGrade > 100) {
+                    throw re;
+                }
+                userArray[i] = userGrade;
             } catch (NumberFormatException nfe) {
                 nfe.printStackTrace();
+                return;
+            } catch (rangeException exc) {
+                System.out.println(exc.getMessage());
                 return;
             }
         }
 
-        System.out.println(Arrays.toString(grades));
-        // make sure all the grades are set!!!
+        System.out.println(Arrays.toString(userArray));
+        // call the setter to assign their array to the grades property
+        Grades.setGrades(userArray);
 
 
+        
         //// possible way of running the methods in a more user-friendly manner
         // boolean runTime = true;
         // while (runtime) {
