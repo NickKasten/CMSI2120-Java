@@ -98,17 +98,43 @@ public class Grades {
                 a ++;
             }
         }
+        
+        
+        int[] gradesArray = new int[]{
+            a,
+            b,
+            c,
+            d,
+            f
+        };
 
-        // Map<Integer, String> histGrades = new HashMap<Integer, String>();
-        // // TODO: construct the Map so that it can call the specific strings in the for loop
 
-        // for (int i : histGrades) {
-        //     System.out.printf("%s", histGrades.get(i));
-        //     for (int x = 1; x <= i; x++) {
-        //         System.out.print("*");
-        //     }
-        //     System.out.println("");
-        // }
+        String[] phrases = new String[]{
+            "90 - 100 | ",
+            "80 - 89  | ",
+            "70 - 79  | ",
+            "60 - 69  | ",
+            "< 60     | "
+        };
+
+        HashMap<String, Integer> histGrades = new HashMap<String, Integer>();
+        for (int i = 0; i < 5; i++) {
+            histGrades.put(phrases[4-i], gradesArray[4-i]);
+            System.out.println(phrases[4-i]);
+        }
+
+        // for each string statement
+
+        // why is the the set of keys messed up???
+        //System.out.println(histGrades.keySet());
+
+        for (String text : histGrades.keySet()) {
+            System.out.printf("%s", text);
+            for (int x = 1; x <= histGrades.get(text); x++) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
     }
 
     public static void main(String[] args) {
@@ -146,6 +172,7 @@ public class Grades {
         // call the setter to assign their array to the grades property
         Grades theirGrades = new Grades(userArray);
         System.out.println(theirGrades.average());
+        theirGrades.histogram();
         
         } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
