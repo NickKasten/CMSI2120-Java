@@ -1,47 +1,60 @@
 import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 // self-made exception
 //import java.rangeException;
 
 public class Grades {
     
-    // grades and numberOfGrades are static so they can be accessed in the main method
-    private static int[] grades;
-    private int highest;
-    private int lowest;
-    private static int numberOfGrades;
+    private int[] grades;
+    //private int highest;
+    //private int lowest;
+    //private int numberOfGrades;
 
     // use the constructor to make their values?
-    Grades () {
-        highest = grades[(grades.length-1)];
-        lowest = grades[0];
+    Grades() {};
+
+    Grades(int[] myArray) {
+        this.grades = myArray;
+        //highest = grades[(grades.length-1)];
+        //lowest = grades[0];
     }
 
 
-    public static void setGrades(int[] myArray) {
-        grades = myArray;
+    public void setValues(int[] myArray) {
+        this.grades = myArray;
     }
     
-    public int[] getGrades() {
-        return grades;
+    public int[] getValues() {
+        return this.grades;
     }
 
-    public int getHighest() {
+    public int highest() {
+        // manual sorting:
+        /*  int storeVar = 0;
+            for (int num = 0; num < this.grades.length; num++) {
+                if (this.grades[num] > storeVar) {
+                    int storeVar = this.grades[num];
+                }
+            }
+            return storeVar;
+         * 
+         */
+        Arrays.sort(this.grades);
+        return this.grades[(this.grades.length-1)];
+    }
+
+    public int lowest() {
         Arrays.sort(grades);
-        return this.highest;
+        return grades[0];
     }
 
-    public int getLowest() {
-        Arrays.sort(grades);
-        return this.lowest;
-    }
-
-    public int getNumberOfGrades() {
-        return numberOfGrades;
+    public int numOfGrades() {
+        return grades.length;
     }
     
-    public double getAverage() {
+    public double average() {
         double sum = 0.0;
         if (grades.length == 0) {
             double average = sum;
@@ -54,10 +67,10 @@ public class Grades {
         }
     }
 
-    public int failingGrades(int failingMark) {
+    public int numOfFailingGrades(int gradeValue) {
         int counter = 0;
         for (int i = 0; i < grades.length; i++) {
-            if (grades[i] < failingMark) {
+            if (grades[i] < gradeValue) {
                 counter ++;
             } 
         }
@@ -86,26 +99,16 @@ public class Grades {
             }
         }
 
-        System.out.println("90 - 100 | ");
-        for (int i = 1; i <= a; i++) {
-            System.out.print("*");
-        }
-        System.out.println("80 - 89  | ");
-        for (int i = 1; i <= b; i++) {
-            System.out.print("*");
-        }
-        System.out.println("70 - 79  | ");
-        for (int i = 1; i <= c; i++) {
-            System.out.print("*");
-        }
-        System.out.println("60 - 69  | ");
-        for (int i = 1; i <= d; i++) {
-            System.out.print("*");
-        }
-        System.out.println("< 60     | ");
-        for (int i = 1; i <= f; i++) {
-            System.out.print("*");
-        }
+        // Map<Integer, String> histGrades = new HashMap<Integer, String>();
+        // // TODO: construct the Map so that it can call the specific strings in the for loop
+
+        // for (int i : histGrades) {
+        //     System.out.printf("%s", histGrades.get(i));
+        //     for (int x = 1; x <= i; x++) {
+        //         System.out.print("*");
+        //     }
+        //     System.out.println("");
+        // }
     }
 
     public static void main(String[] args) {
@@ -118,41 +121,41 @@ public class Grades {
         String userInputGradesNum = myScanner.nextLine();
         // must make sure that if the input is not an integer that it can be parsed from the string that is gets dealt with
         try{
-            numberOfGrades = Integer.parseInt(userInputGradesNum);
-        } catch (NumberFormatException nfe) {
-            nfe.printStackTrace();
-            return;
-        }
-        
-        // Instantiating an array that is the size of the number of grades we have given it
-        int[] userArray = new int[numberOfGrades];
-
-        // for each grade, ask then put that input into the array
-        for (int i = 0; i < numberOfGrades; i++) {
-            System.out.printf("Enter grade %d:", (i+1));
+            int inputNumOfGrades = Integer.parseInt(userInputGradesNum);
+            
+            // Instantiating an array that is the size of the number of grades we have given it
+            int[] userArray = new int[inputNumOfGrades];
 
             rangeException re = new rangeException();
-            // have the scanner's input get assigned to the userInputGrade variable
-            String userInputGrade = myScanner.nextLine();
-            // now lets TRY to just grab their stuff
-            try{
+            // for each grade, ask then put that input into the array
+            for (int i = 0; i < inputNumOfGrades; i++) {
+                System.out.printf("Enter grade %d:", (i+1));
+        
+                // have the scanner's input get assigned to the userInputGrade variable
+                String userInputGrade = myScanner.nextLine();
+
                 int userGrade = Integer.parseInt(userInputGrade);
                 if (userGrade > 100) {
                     throw re;
                 }
                 userArray[i] = userGrade;
-            } catch (NumberFormatException nfe) {
-                nfe.printStackTrace();
-                return;
-            } catch (rangeException exc) {
-                System.out.println(exc.getMessage());
-                return;
-            }
-        }
 
-        System.out.println(Arrays.toString(userArray));
+                //debug   System.out.println(Arrays.toString(userArray));
+            }
+
         // call the setter to assign their array to the grades property
-        Grades.setGrades(userArray);
+        Grades theirGrades = new Grades(userArray);
+        System.out.println(theirGrades.average());
+        
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+            return;
+        } catch (rangeException exc) {
+            System.out.println(exc.getMessage());
+            return;
+        }
+        
+
 
 
         
