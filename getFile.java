@@ -6,22 +6,24 @@ import java.util.Scanner;
 public class getFile {
     public static void main(String[] args) {
 
-        File f = new File("testfile.txt");
+        File f = new File(args[0]);
         Scanner scan = null;
         try {
             scan = new Scanner(f);  
+            while (scan.hasNextLine()) {
+                String s = scan.nextLine();
+    
+                System.out.println(s);
+            }
+            scan.close();
         //
         } catch (FileNotFoundException e) {
             // Auto generated catch block
-            e.printStackTrace();
+            System.out.printf("Your file %s is not a valid file. Please run again. %n", args[0]);
             // instead of constructor InputStream, call constructor with data type File
         }
 
-        while (scan.hasNextLine()) {
-            String s = scan.nextLine();
 
-            System.out.println(s);
-        }
     }
 }
 
