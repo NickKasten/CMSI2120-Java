@@ -2,6 +2,7 @@ import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.LinkedHashMap;
 // self-made exception
 //import java.rangeException;
 
@@ -117,10 +118,10 @@ public class Grades {
             "< 60     | "
         };
 
-        HashMap<String, Integer> histGrades = new HashMap<String, Integer>();
+        LinkedHashMap<String, Integer> histGrades = new LinkedHashMap<String, Integer>();
         for (int i = 0; i < 5; i++) {
-            histGrades.put(phrases[4-i], gradesArray[4-i]);
-            System.out.println(phrases[4-i]);
+            histGrades.put(phrases[i], gradesArray[i]);
+            //System.out.println(phrases[4-i]);
         }
 
         // for each string statement
