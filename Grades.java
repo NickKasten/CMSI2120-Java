@@ -9,17 +9,11 @@ import java.util.LinkedHashMap;
 public class Grades {
     
     private int[] grades;
-    //private int highest;
-    //private int lowest;
-    //private int numberOfGrades;
 
-    // use the constructor to make their values?
     Grades() {};
 
     Grades(int[] myArray) {
         this.grades = myArray;
-        //highest = grades[(grades.length-1)];
-        //lowest = grades[0];
     }
 
 
@@ -85,7 +79,7 @@ public class Grades {
         int c = 0;
         int b = 0;
         int a = 0;
-
+        // count the number through a "Control Flow Filter"
         for (int i = 0; i < grades.length; i++) {
             if (grades[i] < 60) {
                 f ++;
@@ -100,7 +94,7 @@ public class Grades {
             }
         }
         
-        
+        // array for our values
         int[] gradesArray = new int[]{
             a,
             b,
@@ -109,7 +103,7 @@ public class Grades {
             f
         };
 
-
+        // array for our keys
         String[] phrases = new String[]{
             "90 - 100 | ",
             "80 - 89  | ",
@@ -119,16 +113,12 @@ public class Grades {
         };
 
         LinkedHashMap<String, Integer> histGrades = new LinkedHashMap<String, Integer>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < phrases.length; i++) {
             histGrades.put(phrases[i], gradesArray[i]);
             //System.out.println(phrases[4-i]);
         }
 
-        // for each string statement
-
-        // why is the the set of keys messed up???
-        //System.out.println(histGrades.keySet());
-
+        // for each string statement, print it, then make a loop that prints the right number of asterisks
         for (String text : histGrades.keySet()) {
             System.out.printf("%s", text);
             for (int x = 1; x <= histGrades.get(text); x++) {
@@ -173,8 +163,9 @@ public class Grades {
         myScanner.close();
         // call the setter to assign their array to the grades property
         Grades theirGrades = new Grades(userArray);
-        System.out.println(theirGrades.average());
-        theirGrades.histogram();
+        System.out.println(theirGrades.getValues());
+        //System.out.println(theirGrades.average());
+        //theirGrades.histogram();
         
         } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
@@ -183,18 +174,6 @@ public class Grades {
             System.out.println(exc.getMessage());
             return;
         }
-        
-
-
-
-        
-        //// possible way of running the methods in a more user-friendly manner
-        // boolean runTime = true;
-        // while (runtime) {
-        //     System.out.println("What would you like to do?");
-
-        // }
-
     }   
 
 }
