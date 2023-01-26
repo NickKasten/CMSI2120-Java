@@ -168,7 +168,8 @@ public class Grades {
 
                 //debug   System.out.println(Arrays.toString(userArray));
             }
-
+        
+        myScanner.close();
         // call the setter to assign their array to the grades property
         Grades theirGrades = new Grades(userArray);
         System.out.println(theirGrades.average());
