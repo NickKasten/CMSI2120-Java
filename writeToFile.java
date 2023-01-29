@@ -1,29 +1,44 @@
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class writeToFile {
     public static void main(String[] args) {
-        FileReader in = null;
+        //
+        // boolean typing = true;
         FileWriter out = null;
-
         try {
-            File sourceFile = new File(args[0]);
-            File destinationFile = new File(args[1]);
-            //Scanner scan = new Scanner(sourceFile);
 
-            in = new FileReader(sourceFile);
-            out = new FileWriter(destinationFile);
+            System.out.printf("Start typing what you would like to add to your file! %nType '!!!' to stop.%n");
+            String fileContent = "";
+            Scanner myScanner = new Scanner(System.in);
 
-            int c;
-            while ((c = in.read()) != -1) {
-                out.write(c);
+            // keep scanning the lines until there is a !!!
+            String newInput;
+
+            while (true) { 
+                    newInput = myScanner.nextLine();
+                    // why isnt it recognizing this?
+                    //System.out.println("THIS IS NEW INPUT: " + newInput);
+                    if (newInput.equals("!!!")) {
+                        break;
+                    } else {
+                    //    System.out.println("THIS IS ELSE NEW INPUT: " + newInput);
+                        
+                        fileContent = fileContent + " " + newInput;
+                    //    System.out.println("FILE CONTENT: " + fileContent);
+                    }
             }
-            in.close();
+
+            System.out.println("What would you like to name the file?");
+            String fileName = myScanner.nextLine() + ".txt";
+
+            System.out.println("Your file " + fileName + " contains: " + fileContent);
+
+            out = new FileWriter(fileName);
+            out.write(fileContent);
+            myScanner.close();
             out.close();
 
         } catch (FileNotFoundException fnf) {
