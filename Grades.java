@@ -143,7 +143,7 @@ public class Grades {
             // Instantiating an array that is the size of the number of grades we have given it
             int[] userArray = new int[inputNumOfGrades];
 
-            rangeException re = new rangeException();
+            rangeException re = new rangeException("100");
             // for each grade, ask then put that input into the array
             for (int i = 0; i < inputNumOfGrades; i++) {
                 System.out.printf("Enter grade %d:", (i+1));
