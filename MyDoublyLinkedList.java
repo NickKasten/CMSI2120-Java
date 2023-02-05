@@ -30,9 +30,11 @@ class MyDoublyLinkedList {
     public void printList( ) { 
         Node trav;
         trav = head;
-        while (trav.next!=null) {
+        int counter = 0;
+        while (counter <= this.len) {
             System.out.println(trav.name);
             trav = trav.next;
+            counter ++;
         }
 
     }

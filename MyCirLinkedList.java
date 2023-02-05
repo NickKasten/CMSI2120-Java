@@ -30,15 +30,17 @@ public class MyCirLinkedList {
 			this.size = 0;
 		} else {
 			end.setLink(trav);
-			start=trav;}
+			start = trav;}
 		this.size++;}
 	
 	public void printList( ) {
 		CNode trav;
 		trav = start;
-		while(trav != end) {
-			System.out.println(trav);
+		int counter = 0;
+		while(counter < this.size) {
+			System.out.println(trav.getData());
 			trav = trav.getLink();
+			counter ++;
 		}
 	}
 
