@@ -70,7 +70,7 @@ class MyDoublyLinkedList {
             Node trav;
             trav = tail;
             int counter = 0;
-            while (counter!=((this.len - 1) - index)) {
+            while (counter!=(this.len - (index - 1))) {
             // subtracting 1 minus the length gets the appropriate index to add at
                 trav = trav.previous;
                 counter ++;
@@ -151,12 +151,9 @@ class MyDoublyLinkedList {
     //returns index of where String str  is at.  Returns -1 if String str is not in LinkedList
     public void removeNodeAt(int index) {
         // removes Node at index value
-		if((index > len) || (index < 0))
-	   {
+		if((index > len) || (index < 0)){
 		   System.out.println("Insertion index out of bound");  
-	   }
-	   else
-	   {
+	    } else if (index < len/2) {
 		   Node trav;
 		   trav = head;
 		   int counter = 0;
@@ -170,7 +167,21 @@ class MyDoublyLinkedList {
 		   trav.next = r;
 			 
 		   this.len--; 
-	   }   
+	    } else {
+            Node trav;
+            trav = tail;
+            int counter = 0;
+            while (counter < this.len - (index-1))
+            {
+                trav = trav.previous;
+                counter++;
+            }
+            Node r;
+            r = trav.previous.previous;
+            trav.previous = r;
+            
+            this.len--; 
+       }
 
     }
     // removes Node at index value
