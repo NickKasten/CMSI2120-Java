@@ -150,6 +150,27 @@ class MyDoublyLinkedList {
     }
     //returns index of where String str  is at.  Returns -1 if String str is not in LinkedList
     public void removeNodeAt(int index) {
+        // removes Node at index value
+		if((index > len) || (index < 0))
+	   {
+		   System.out.println("Insertion index out of bound");  
+	   }
+	   else
+	   {
+		   Node trav;
+		   trav = head;
+		   int counter = 0;
+		   while (counter < index-1)
+		   {
+			   trav = trav.next;
+			   counter++;
+		   }
+		   Node r;
+		   r = trav.next.next;
+		   trav.next = r;
+			 
+		   this.len--; 
+	   }   
 
     }
     // removes Node at index value
