@@ -1,7 +1,7 @@
-package example1;
+//package example1;
 
 class CNode{
-	private int data = null;
+	private int data;
 	private CNode link = null;
 	
 	public CNode(int x, CNode y) {
