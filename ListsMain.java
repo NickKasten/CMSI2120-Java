@@ -20,6 +20,12 @@ public class ListsMain {
                     int ids = Integer.parseInt(stringIds);
                     userCLL.add(ids);
                 }
+                myScan.close();
+                userCLL.printList();
+                System.out.print("Index of 15 is:");
+                System.out.println(userCLL.indexOf(15));
+                userCLL.removeNodeAt(0);
+                System.out.println("/////");
                 userCLL.printList();
 
             } else if (input.equals("DLL")) {
@@ -34,6 +40,12 @@ public class ListsMain {
                     }
                     userDLL.addNode(new Node(userStrings));
                 }
+                myScan.close();
+                userDLL.printList();
+                System.out.print("Index of Hello World! is:");
+                System.out.println(userDLL.indexOf("Hello World!"));
+                userDLL.removeNodeAt(0);
+                System.out.println("/////");
                 userDLL.printList();   
 
             } else {
