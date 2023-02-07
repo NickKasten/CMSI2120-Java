@@ -50,6 +50,7 @@ public class ListsMain {
 
             } else {
                 Exception e = new Exception();
+                myScan.close();
                 throw e;            
             }
         } catch (NumberFormatException nfe) {
