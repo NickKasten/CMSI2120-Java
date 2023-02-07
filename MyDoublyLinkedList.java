@@ -167,6 +167,7 @@ class MyDoublyLinkedList {
 		   Node r;
 		   r = trav.next.next;
 		   trav.next = r;
+           r.previous = trav;
 			 
 		   this.len--; 
 	    } else {
@@ -181,6 +182,7 @@ class MyDoublyLinkedList {
             Node r;
             r = trav.previous.previous;
             trav.previous = r;
+            r.next = trav;
             
             this.len--; 
        }

@@ -42,7 +42,7 @@ public class ListsMain {
                 }
                 myScan.close();
                 userDLL.printList();
-                System.out.print("Index of Hello World! is:");
+                System.out.print("Index of Hello World! is");
                 System.out.println(userDLL.indexOf("Hello World!"));
                 userDLL.removeNodeAt(0);
                 System.out.println("/////");
