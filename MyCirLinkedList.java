@@ -22,7 +22,7 @@ public class MyCirLinkedList {
 	public void add(int n) {
 		CNode trav = new CNode(n, null);
 		trav.setLink(start);
-		if (start==null) {
+		if (this.isEmpty()) {
 			// first element
 			start = trav;
 			trav.setLink(start);
@@ -34,13 +34,17 @@ public class MyCirLinkedList {
 		this.size++;}
 	
 	public void printList( ) {
-		CNode trav;
-		trav = start;
-		int counter = 0;
-		while(counter < this.size) {
-			System.out.println(trav.getData());
-			trav = trav.getLink();
-			counter ++;
+		if (this.isEmpty()) {
+			System.out.println("nothing");
+		} else {
+			CNode trav;
+			trav = start;
+			int counter = 0;
+			while(counter < this.size) {
+				System.out.println(trav.getData());
+				trav = trav.getLink();
+				counter ++;
+			}
 		}
 	}
 
