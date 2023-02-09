@@ -5,11 +5,14 @@ class MyDoublyLinkedList {
     private int len;
 
     MyDoublyLinkedList() {
+        //the head is null since the list contains nothing yet
         head = null;
         tail = null;
     }
+
     public void addNode(String s) {
         Node n = new Node(s);
+        // now when adding we set the node we've made to the head (and tail)
         if (head == null) {
             head = n;
             tail = n;
