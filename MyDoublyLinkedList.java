@@ -8,7 +8,8 @@ class MyDoublyLinkedList {
         head = null;
         tail = null;
     }
-    public void addNode(Node n) {
+    public void addNode(String s) {
+        Node n = new Node(s);
         if (head == null) {
             head = n;
             tail = n;
@@ -27,16 +28,19 @@ class MyDoublyLinkedList {
         }
 
 
-    public void printList( ) { 
-        Node trav;
-        trav = head;
-        int counter = 0;
-        while (counter <= this.len) {
-            System.out.println(trav.name);
-            trav = trav.next;
-            counter ++;
+    public void printList() { 
+        if (len == 0) {
+            System.out.println("nothing in list!");
+        } else {
+            Node trav;
+            trav = head;
+            int counter = 0;
+            while (counter <= this.len) {
+                System.out.println(trav.name);
+                trav = trav.next;
+                counter ++;
+            }
         }
-
     }
 
     public void insertBefore (int index, Node n) {

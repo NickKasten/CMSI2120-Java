@@ -48,14 +48,15 @@ public class MyCirLinkedList {
 		}
 	}
 
-	public void insertBefore (int index, CNode n) {
+	public void insertBefore (int index, int q) {
+		CNode n = new CNode(q, null);
 		if ((index > size) || (index <= 0)) {
 			System.out.println("Index out of range");
-		} else if (index == 1) {
-			n.setLink(start);
-			end = start;
-			start = n;
-			this.size ++;
+		// } else if (index == 1) {
+		// 	n.setLink(start);
+		// 	end = start;
+		// 	start = n;
+		// 	this.size ++;
 		} else {
 			int count = 0;
 			CNode trav;
@@ -70,14 +71,15 @@ public class MyCirLinkedList {
 		}
 	}
 
-	public void insertAfter (int index, CNode n) {
+	public void insertAfter (int index, int q) {
+		CNode n = new CNode(q, null);
 		if ((index > size) || (index < 0)) {
 			System.out.println("Index out of range");
-		} else if (index == 0) {
-			n.setLink(start.getLink());
-			start.setLink(n);
-			end = n;
-			this.size ++;
+		// } else if (index == 0) {
+		// 	n.setLink(start.getLink());
+		// 	start.setLink(n);
+		// 	end = n;
+		// 	this.size ++;
 		} else {
 			int count = 0;
 			CNode trav;
