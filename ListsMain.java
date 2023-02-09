@@ -12,13 +12,15 @@ public class ListsMain {
                 System.out.println("Enter your IDs to store");
                 MyCirLinkedList userCLL = new MyCirLinkedList();
                 
-                while (true) {
+                boolean keepAsking = true;
+                while (keepAsking) {
                     String stringIds = myScan.nextLine();
                     if (stringIds.equals("!!!")) {
-                        break;
-                    }
+                        keepAsking = false;
+                    } else {
                     int ids = Integer.parseInt(stringIds);
                     userCLL.add(ids);
+                    }
                 }
                 myScan.close();
                 userCLL.printList();

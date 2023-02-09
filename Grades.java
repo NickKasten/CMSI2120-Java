@@ -21,8 +21,8 @@ public class Grades {
         this.grades = myArray;
     }
     
-    public int[] getValues() {
-        return this.grades;
+    public String getValues() {
+        return Arrays.toString(this.grades);
     }
 
     public int highest() {
@@ -163,9 +163,17 @@ public class Grades {
         myScanner.close();
         // call the setter to assign their array to the grades property
         Grades theirGrades = new Grades(userArray);
+        System.out.println("This is you grade value:");
         System.out.println(theirGrades.getValues());
-        //System.out.println(theirGrades.average());
-        //theirGrades.histogram();
+        System.out.println("This is the highest grade:");
+        System.out.println(theirGrades.highest());
+        System.out.println("This is the lowest grade:");
+        System.out.println(theirGrades.lowest());
+        System.out.printf("You have %d grades inputted", theirGrades.numOfGrades());
+        System.out.println("The average grade value is:");
+        System.out.println(theirGrades.average());
+        System.out.println("Here is your histogram:");
+        theirGrades.histogram();
         
         } catch (NumberFormatException nfe) {
             nfe.printStackTrace();
