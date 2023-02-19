@@ -30,7 +30,9 @@ public class MyCirLinkedList {
 			this.size = 0;
 		} else {
 			end.setLink(trav);
-			start = trav;}
+			end=trav;
+			// start = trav;
+		}
 		this.size++;}
 	
 	public void printList( ) {
@@ -98,9 +100,12 @@ public class MyCirLinkedList {
 		CNode trav;
 		trav = start;
 		int counter = 0;
-		while(trav.getData() != num) {
+		while((trav.getData()) != (num)) {
 			trav = trav.getLink();
 			counter ++;
+			if ((counter > size)) {
+				return -1;
+			}
 		}
 		return counter;
 	}

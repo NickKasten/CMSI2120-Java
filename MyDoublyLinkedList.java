@@ -39,6 +39,7 @@ class MyDoublyLinkedList {
             trav = head;
             int counter = 0;
             while (counter <= this.len) {
+                // debug: System.out.printf("We are trying to print node %d", counter);
                 System.out.println(trav.name);
                 trav = trav.next;
                 counter ++;
@@ -46,14 +47,18 @@ class MyDoublyLinkedList {
         }
     }
 
-    public void insertBefore (int index, Node n) {
+    public void insertBefore (int index, String s) {
+        Node n = new Node(s);
         if ((index == 0) || index>len) {
             System.out.println("Insertion Error: Index out of bounds");
-        } else if (index==1) {
+        } else if (index==0) {
+            // debug: System.out.println("I'm the _____ thats not working >.<");
             head.previous = n;
             n.next = head;
+            head = n;
             this.len ++;
-        } else if (index < (len/2)){
+        } else if (index <= (len/2)){
+            // debug: System.out.println("I made it to the regular before add!!!");
             Node trav;
             trav = head;
             int counter = 0;
@@ -76,11 +81,11 @@ class MyDoublyLinkedList {
 
         // go backwards for more efficiency
         } else {
+            // debug: System.out.println("I made it to the backwards before add!!!");
             Node trav;
             trav = tail;
             int counter = 0;
-            while (counter!=(this.len - (index - 1))) {
-            // subtracting 1 minus the length gets the appropriate index to add at
+            while (counter!=((this.len - (index)))) {
                 trav = trav.previous;
                 counter ++;
             }
@@ -95,14 +100,15 @@ class MyDoublyLinkedList {
         }
     }
 
-    public void insertAfter (int index, Node n) {
+    public void insertAfter (int index, String s) {
+        Node n = new Node(s);
         if (index>len) {
             System.out.println("Insertion Error: Index out of bounds");
-        } else if (index==1) {
-            head.previous = n;
-            n.next = head;
-            this.len ++;
-        } else if (index < (len/2)){
+        // } else if (index==1) {
+        //     head.previous = n;
+        //     n.next = head;
+        //     this.len ++;
+        } else if (index <= (len/2)){
             Node trav;
             trav = head;
             int counter = 0;
@@ -126,7 +132,7 @@ class MyDoublyLinkedList {
             Node trav;
             trav = tail;
             int counter = 0;
-            while (counter!=(this.len - index)) {
+            while (counter!=((this.len - index)-1)) {
                 trav = trav.previous;
                 counter ++;
             }
@@ -148,11 +154,16 @@ class MyDoublyLinkedList {
         int counter = 0;
 
         while (!found) {
-            if (trav.name == str) {
+            if (trav.name.equals(str)) {
+                // debug: System.out.println("we made it here");
                 found = true;
                 return counter;
+            } else if (counter > len) {
+                return -1;
             } else {
+                // debug: System.out.println("we are still going");
                 counter ++;
+                trav = trav.next;
             }
         }
         return counter;
@@ -162,7 +173,15 @@ class MyDoublyLinkedList {
         // removes Node at index value
 		if((index > len) || (index < 0)){
 		   System.out.println("Insertion index out of bound");  
-	    } else if (index < len/2) {
+        } else if (index == 0) {
+            // debug: System.out.println("we made it here");
+            // debug: System.out.println(head.next.previous.name);
+            head.next.previous = null;
+            // debug: System.out.println(head.next.name);
+            head = head.next;
+            // debug: System.out.println(head.name);
+            len --;
+	    } else if (index <= len/2) {
 		   Node trav;
 		   trav = head;
 		   int counter = 0;
@@ -181,7 +200,7 @@ class MyDoublyLinkedList {
             Node trav;
             trav = tail;
             int counter = 0;
-            while (counter < this.len - (index-1))
+            while (counter < this.len - (index))
             {
                 trav = trav.previous;
                 counter++;
