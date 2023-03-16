@@ -1,5 +1,3 @@
-//package example1;
-
 class CNode{
 	private int data;
 	private CNode link = null;
