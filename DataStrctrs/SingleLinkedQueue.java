@@ -10,9 +10,15 @@ public class SingleLinkedQueue implements Queue{
         }
     }
 
-    private Node head = null;
-    private Node tail = null;
-    private int size = 0;
+    private Node head;
+    private Node tail;
+    private int size;
+
+    SingleLinkedQueue() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
 
     public void enqueue(Object item) {
         if (isEmpty()) {
