@@ -6,7 +6,8 @@ public class MoodWeatherMan implements Speaker{
 		Scanner key = new Scanner(System.in);
 		System.out.println("Hello, are you ready for your weather forecast? Enter Y for Yes or N for No.");
 		String rep = key.next();
-		
+		key.close();
+
 		if(rep.equalsIgnoreCase("y")){
 			System.out.println("How do you feel?");
 			rep = key.next();

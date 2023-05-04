@@ -2,6 +2,11 @@ public class SpeakerTest{
 
 	public static void main(String[] args){
 		System.out.println("\n");
+		
+		Teacher teacher = new Teacher();
+		teacher.speak();
+		teacher.announce("Nick");
+		
 		TrainNav nytrain = new TrainNav();
 		nytrain.speak();
 		nytrain.announce("Next");
@@ -22,5 +27,7 @@ public class SpeakerTest{
 		parrot.announce("Name");
 		parrot.announce("Age");	
 		
+		
+
 	}
 }

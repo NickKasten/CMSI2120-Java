@@ -12,7 +12,7 @@ public class Parrot implements Speaker{
 			System.out.println("Your name is Freda. Kwerrr!");
 		}
 		else if(str.equalsIgnoreCase("age")){
-			System.out.println("You are 50 years old. Kwerrr!");
+			System.out.println("You are ACTuaLlY 51 years old. Kwerrr!");
 		}
 		else{
 			System.out.println("Kwerrr! Kwerrr! Kwerrr!");
