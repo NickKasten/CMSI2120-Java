@@ -5,10 +5,10 @@
 - Familiarize with Java
 - Practice Effective, Efficient Workplace Programming Habits
 ---
-## Included in this Repo are:
-- User-built Data Structures
-- Tests/Applications of user-defined and prebuilt Data Structures
-- General Java Functionalities (I/O, )
+## Included in this Repo:
+- User-built Data Structures (**Data Structures**)
+- Tests/Applications of user-defined and prebuilt Data Structures (**Assignments**, **Data Structures**)
+- General Java Functionalities such as I/O, File Writing (**Assignments**, **Labs**)
 ---
 ## Credits:
 ### Course Teacher: Professor Emi Harry
